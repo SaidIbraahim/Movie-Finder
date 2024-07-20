@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Database</h1>
+        <form action="/movies" method="post">
+            <input type="text" name="movie" placeholder="Enter movie name" required>
+            <button type="submit">Search</button>
+        </form>
+
+        <% if (movie) { %>
+            <div class="movie-poster">
+                <img src="<%= movie.Poster %>" alt="Movie Poster">
+            </div>
+            <div class="movie-info">
+                <h2><%= movie.Title %> (<%= movie.Year %>)</h2>
+                <p><strong>Director:</strong> <%= movie.Director %></p>
+                <p><strong>Cast:</strong> <%= movie.Actors %></p>
+                <p><strong>Plot:</strong> <%= movie.Plot %></p>
+                <p><strong>IMDB Rating:</strong> <%= movie.imdbRating %></p>
+            </div>
+        <% } %>
+
+        <% if (error) { %>
+            <div class="error">
+                <p><%= error %></p>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
